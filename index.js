@@ -77,14 +77,18 @@ document.addEventListener('DOMContentLoaded', (e) => {
         // Insert the card into the cardSection div
         cardSection.appendChild(cardDiv);
 
-        const cards = document.querySelectorAll('.drink-card'); // Select all cards
-cards.forEach(card => {
-    card.addEventListener('mouseover', () => {
-        // Define what happens on hover here
-        console.log('Card hovered!');
-        //finish mouseover event listener
-    });
-});
+        //Mouse over event to display instructions
+        cardDiv.addEventListener('mouseover', () => {
+            const instructionsDisplay = document.getElementById('instructions'); // Assuming you have an element with id="instructions" to display the text
+            instructionsDisplay.textContent = cardDiv.dataset.instructions;
+            instructionsDisplay.style.display = 'block'; // Show the instructions
+        });
+        //Mouse out event to remove instructions when mouse is moved off the card
+        cardDiv.addEventListener('mouseout', () => {
+            const instructionsDisplay = document.getElementById('instructions');
+            instructionsDisplay.textContent = ''; // Clear the instructions text
+            instructionsDisplay.style.display = 'none'; // Hide the instructions
+        });
     }
 });
 
