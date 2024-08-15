@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+  }
+
+  body {
+    padding: 1rem;
+    text-align: center;
+    background-color: #6236ca;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+    p {color: #000000;
+
+  }
+
+  #dog {
+    color: rgb(255, 255, 255);
+    width:100%;margin-top: auto;
+    font-size: 300%;
+  }
+
+
+
+  #generationTextNBtn {
+    font-size: 330%;
+  }
+
+  #generateBtn {
+    font-size: 70%;
+  }
+
+  #card {
+    text-align: center;
+    border: grey solid 1px;
+    padding: 1rem;
+    width: 25rem;
+    height: 40rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    box-shadow: 3px 4px #e04b52
+  }
