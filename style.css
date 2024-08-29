@@ -1,21 +1,25 @@
 * {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
+  }
+
+  header {
+    color:#feb236;
+    font-family: 'Helvetica';
   }
 
   body {
     padding: 1rem;
     text-align: center;
-    background-color: #6236ca;
+    background-color: #6b5b95;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-    p {color: #000000;
-
+    p {color: #d64161;
+      font-family:'Helvetica';
   }
 
   #dog {
@@ -32,15 +36,26 @@
 
   #generateBtn {
     font-size: 70%;
+    color:#fcae2d;
+    background-color: #7f6bb5;
+    font-family: 'Helvetica';
   }
 
-  #card {
-    text-align: center;
-    border: grey solid 1px;
-    padding: 1rem;
-    width: 25rem;
-    height: 40rem;
-    display: inline-grid;
-    margin: 1rem 2rem;
-    box-shadow: 3px 4px #e04b52
+  .drink-card {
+
+  }
+
+  #cardSection {
+    color:#d64161;
+    margin: 0 0 15px 0;
+    font-family: 'Univers';
+  
+  }
+
+  #instructions {
+    margin: 0 0 10px 0;
+    color:#fec536;
+  }
+  #imgInst {
+    color:#ff7b25;
   }

@@ -3,23 +3,20 @@ document.addEventListener('DOMContentLoaded', (e) => {
     const generateBtn = document.getElementById('generateBtn');
     const musicElement = document.getElementById("sound");
 
-    //Create an Audio Object
+    // Create an Audio Object to handle background music playback
     let audio = new Audio('/sound/hawaii.mp3');
 
-    //Define playAudio Function
+    // Define playAudio Function 
     function playAudio() {
         if (!audio.muted) { // Only play if not muted
             audio.play().catch(error => console.error('Error playing Audio:', error));
         }
     }
-
-    
-    
-    document.addEventListener('scroll', () => {
-        audio.muted = false; // Unmute the audio
+    // Unmute the audio upon scroll. Note that users must interact with the DOM in order for browser restrictions to allow audio to be played.
+    // Therefore audio will only be activated on scroll after users have generated a margarita
+    document.addEventListener('scroll', () => { 
         playAudio();
     });
-
 
     // Attach click event listener to the Generate button
     generateBtn.addEventListener('click', () => {
@@ -58,8 +55,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
         const ingredientsList = document.createElement('ul');
 
-        // Loops through the ingredients and measurements, assuming they exist up to the 15th ingredient
-        for (let i = 1; i <= 15; i++) {
+        // Refactored loop using map
+        Array.from({ length: 15 }, (_, i) => i + 1).map(i => {
             const ingredient = drink[`strIngredient${i}`];
             const measure = drink[`strMeasure${i}`];
             if (ingredient && measure) {
@@ -67,7 +64,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 listItem.textContent = `${measure} ${ingredient}`;
                 ingredientsList.appendChild(listItem);
             }
-        }
+        });
 
         // Append elements to the card
         cardDiv.appendChild(imgElement);
@@ -77,17 +74,17 @@ document.addEventListener('DOMContentLoaded', (e) => {
         // Insert the card into the cardSection div
         cardSection.appendChild(cardDiv);
 
-        //Mouse over event to display instructions
+        // Mouse over event to display instructions
         cardDiv.addEventListener('mouseover', () => {
-            const instructionsDisplay = document.getElementById('instructions'); // Assuming you have an element with id="instructions" to display the text
+            const instructionsDisplay = document.getElementById('instructions'); 
             instructionsDisplay.textContent = cardDiv.dataset.instructions;
-            instructionsDisplay.style.display = 'block'; // Show the instructions
+            instructionsDisplay.style.display = 'block';
         });
-        //Mouse out event to remove instructions when mouse is moved off the card
+        // Mouse out event to remove instructions when mouse is moved off the card
         cardDiv.addEventListener('mouseout', () => {
             const instructionsDisplay = document.getElementById('instructions');
             instructionsDisplay.textContent = ''; // Clear the instructions text
-            instructionsDisplay.style.display = 'none'; // Hide the instructions
+            
         });
     }
 });
