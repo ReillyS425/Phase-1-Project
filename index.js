@@ -1,19 +1,18 @@
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
     const generateBtn = document.getElementById('generateBtn');
-    const musicElement = document.getElementById("sound");
+    
 
-    // Create an Audio Object to handle background music playback
+    // Created an Audio Object to handle background music playback
     let audio = new Audio('/sound/hawaii.mp3');
 
-    // Define playAudio Function 
+    // Creates playAudio Function 
     function playAudio() {
         if (!audio.muted) { // Only play if not muted
             audio.play().catch(error => console.error('Error playing Audio:', error));
         }
     }
     // Unmute the audio upon scroll. Note that users must interact with the DOM in order for browser restrictions to allow audio to be played.
-    // Therefore audio will only be activated on scroll after users have generated a margarita
     document.addEventListener('scroll', () => { 
         playAudio();
     });
@@ -39,12 +38,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     // Function to display the drink information on the page
     function displayDrinkCard(drink) {
         const cardSection = document.getElementById('cardSection');
-        cardSection.textContent = ''; // Clear existing content
+        cardSection.textContent = ''; // Clears any existing content
 
         // Create elements for the card
         const cardDiv = document.createElement('div');
         cardDiv.className = 'drink-card'; // STYLE THIS IN CSS DELETE WHEN FINISHED
-        cardDiv.dataset.instructions = drink.strInstructions; // Store instructions in a data attribute
+        cardDiv.dataset.instructions = drink.strInstructions; // Stores instructions in a data attribute
 
         const imgElement = document.createElement('img');
         imgElement.src = drink.strDrinkThumb;
@@ -55,11 +54,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
         const ingredientsList = document.createElement('ul');
 
-        // Refactored loop using map
-        Array.from({ length: 15 }, (_, i) => i + 1).map(i => {
+        //creates an array of numbers from index 1 to 15
+        Array.from({ length: 15 }, (_, i) => i + 1).map(i => { //here .map is used for iteration, NOTE: I might be able to change this using map to create the array and iterate.
             const ingredient = drink[`strIngredient${i}`];
             const measure = drink[`strMeasure${i}`];
-            if (ingredient && measure) {
+            if (ingredient && measure) {                        //checks if both ingredient and measure are existing
                 const listItem = document.createElement('li');
                 listItem.textContent = `${measure} ${ingredient}`;
                 ingredientsList.appendChild(listItem);
