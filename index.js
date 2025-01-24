@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const ingredientsList = document.createElement('ul');
 
         //creates an array of numbers from index 1 to 15
-        Array.from({ length: 15 }, (_, i) => i + 1).map(i => { //here .map is used for iteration, NOTE: I might be able to change this using map to create the array and iterate.
+        Array.from({ length: 15 }, (_, i) => i + 1).map(i => { //here .map is used for iteration over the array
             const ingredient = drink[`strIngredient${i}`];
             const measure = drink[`strMeasure${i}`];
             if (ingredient && measure) {                        //checks if both ingredient and measure are existing
